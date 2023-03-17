@@ -33,16 +33,25 @@ class DoublyLinkedList {
   addToTail(val) {
     // Your code here
     let item = new DoublyLinkedListNode(val);
+    if(this.head===null){
+      this.head=item;
+      this.length++;
+      return;
+    }
     if (this.head) {
       let current = this.head;
       while (current.next) {
         current = current.next;
       }
+      item.prev=current;
       current.next = item;
-    } else {
-      this.head = item;
-    }
-    this.length++;
+      this.tail=item;
+      this.length++;
+      return;
+    } 
+      this.tail=item;
+      this.length++;
+  
   }
 
   // You can use this function to help debug
@@ -57,5 +66,4 @@ class DoublyLinkedList {
     console.log("NULL");
   }
 }
-
 module.exports = DoublyLinkedList;

@@ -16,27 +16,31 @@ class LinkedList {
   addToHead(val) {
     // Your code here
     let item = new LinkedListNode(val);
-    if (this.head) {
-      item.next = this.head;
+    if (this.head === null) {
       this.head = item;
-    } else {
-      this.head = item;
+      this.length++;
+      return;
     }
+
+    item.next = this.head;
+    this.head = item;
     this.length++;
   }
 
   addToTail(val) {
     // Your code here
     let item = new LinkedListNode(val);
-    if (this.head) {
-      let current = this.head;
-      while (current.next) {
-        current = current.next;
-      }
-      current.next = item;
-    } else {
+    if (this.head === null) {
       this.head = item;
+      this.length++;
+      return;
     }
+
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = item;
     this.length++;
   }
 
